@@ -23,3 +23,4 @@ from orders
 group by customer_id
 having sum(amount)>=25000
 order by customer_id asc;
+
