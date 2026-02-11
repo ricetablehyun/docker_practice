@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: raw
+    database: dbt-northwind-487102  # 네 프로젝트 ID
+    schema: raw_data  # 데이터셋 이름
+    description: "Northwind 원본 데이터"
+    tables:
+      - name: customers
+        description: "고객 정보 (~91행)"
+      - name: orders
+        description: "주문 헤더 (~830행)"
+      - name: order_details
+        description: "주문 상세 (~2155행)"
+      - name: products
+        description: "상품 정보 (~77행)"
