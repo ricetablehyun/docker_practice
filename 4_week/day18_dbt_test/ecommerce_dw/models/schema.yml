@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "고객 정보 (Staging)"
+    columns:
+      - name: customer_id
+        description: "고객 고유 ID (PK)"
+        tests:
+          - unique
+          - not_null
+      
+      - name: company_name
+        description: "회사명"
+        tests:
+          - not_null
+
+  - name: stg_orders
+    description: "주문 정보 (Staging)"
+    columns:
+      - name: order_id
+        description: "주문 고유 ID (PK)"
+        tests:
+          - unique
+          - not_null
+      
+      - name: customer_id
+        description: "고객 ID (FK)"
+        tests:
+          - not_null
+
+  - name: fct_orders
+    description: "주문 팩트 테이블"
+    columns:
+      - name: order_id
+        description: "주문 고유 ID (PK)"
+        tests:
+          - unique
+          - not_null
+      
+      - name: customer_id
+        description: "고객 ID (FK)"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
