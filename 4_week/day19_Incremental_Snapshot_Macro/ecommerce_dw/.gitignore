@@ -1,0 +1,9 @@
+# .gitignore
+target/
+dbt_packages/
+logs/
+.DS_Store
+*.json
+__pycache__/
+venv/
+.env
