@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: stg_dirty
+    description: "정제된 주문 데이터 (GE 통과 + SQL 클렌징)"
+    columns:
+      - name: order_sk
+        description: "Surrogate Key (FARM_FINGERPRINT)"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+
+  - name: fct_earnings
+    description: "주문별 순이익 Fact 테이블"
+    columns:
+      - name: order_sk
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['pending', 'shipped', 'delivered', 'cancelled', 'returned', 'complete', 'refunded']
+      - name: net_profit
+        tests:
+          - not_null
+
+  - name: dim_customers
+    description: "고객 나라별 분포 Dimension"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
