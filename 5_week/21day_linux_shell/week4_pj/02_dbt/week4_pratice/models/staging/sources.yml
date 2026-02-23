@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: external_source       # dbt에서 부를 별명 (맘대로 정해도 됨)
+    schema: raw_dirty_orders    # [중요] 실제 빅쿼리에 있는 데이터셋 이름
+    tables:
+      - name: dirty_orders      # [중요] 실제 빅쿼리에 있는 테이블 이름
