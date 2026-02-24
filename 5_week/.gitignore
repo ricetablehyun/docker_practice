@@ -1,0 +1,12 @@
+# 1. 1급 기밀 (절대 올라가면 안 됨)
+*.pem
+.env
+profiles.yml
+
+# 2. 용량 낭비 쓰레기 (올라갈 필요 없음)
+venv/
+__pycache__/
+*.log
+
+# 3. 맥북 시스템 파일
+.DS_Store
