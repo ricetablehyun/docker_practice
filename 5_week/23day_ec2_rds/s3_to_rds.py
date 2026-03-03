@@ -2,6 +2,7 @@ import boto3
 import pandas as pd
 from sqlalchemy import create_engine
 import io
+import os 
 
 # ==========================================
 # [Master Mode] S3 -> RDS Pipeline (코드 오류 수정본)
@@ -10,9 +11,9 @@ import io
 # [Fact] 설정 정보
 S3_BUCKET = "master-data-pipeline-2026"
 S3_FILE_KEY = "bronze/orders/dirty_orders.csv"
-RDS_ENDPOINT = "de-study-db.cvwe40ss4fxp.ap-northeast-2.rds.amazonaws.com"
-RDS_USER = "postgres"  # (주의) 아까 생성할 때 'postgres' 였음. admin이 아님!
-RDS_PWD = "admin1234"
+RDS_ENDPOINT = os.environ['RDS_ENDPOINT']
+RDS_USER = os.environ['RDS_USER']
+RDS_PWD = os.environ['RDS_PWD']
 
 # [치명적 에러 수정 1] RDS_DB는 금고 건물 이름이 아니라, 금고 '내부의 방 이름'입니다.
 # 아까 Additional configuration에서 만든 방 이름이 'pipeline_db' 입니다.
